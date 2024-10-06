@@ -9,12 +9,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Pre defined variables for error handling
 var (
 	ErrInvalidOrg       = errors.New("error: OrgId does not exist or is invalid")
 	ErrInvalidFolder    = errors.New("error: Folder does not exist")
 	ErrFolderInvalidOrg = errors.New("error: Folder does not exist in the given org")
 )
 
+// function has return type result - either a slice of folders or an error
 type Result struct {
 	Folders []folder.Folder
 	Err     error
@@ -36,7 +38,7 @@ func Test_folder_GetFoldersByOrgID(t *testing.T) {
 			testName: "get folders with defaultOrgId",
 			orgID:    defaultOrgId,
 			folders:  sample_data,
-			want:     sample_data[79:220], // sample_data[80:219] refers to folders in data with defaultOrgId.
+			want:     sample_data[79:220],
 		},
 	}
 	for _, tt := range tests {
